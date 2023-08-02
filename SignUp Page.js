@@ -23,7 +23,7 @@ function userData()
     localStorage.setItem("password",pass);
     localStorage.setItem("DOB",`${date}-${day}-${year}`);
    
-    window.open("login page.html");
+    window.open("index1.html");
 }
 
 function genderFun(gen)
@@ -33,5 +33,5 @@ function genderFun(gen)
 }
 function gotoLoginPage()
 {
-    window.open("login page.html");
+    window.open("index1.html");
 }
