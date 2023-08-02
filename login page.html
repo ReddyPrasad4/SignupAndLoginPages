@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        #backPage{
+            height: 400px;
+            width: 400px;
+            border-radius: 100%;
+            background-image: linear-gradient(75deg,red,blue,orange,yellow,pink,lawngreen,pink,yellow,orange,blue,red);
+            background-size: 800%;
+            background-position: 800%;
+            animation: colorChangeAnimation linear 1s  infinite ;
+            filter: blur(80px);
+            position: absolute;
+            z-index: -1;
+
+        }
+        @keyframes colorChangeAnimation {
+            from{
+                background-position: 800%;
+            }
+            to{
+                background-position: 0%;
+            }
+            
+        }
+        #container{
+            height: 500px;
+            width: 500px;
+            background-color: rgba(128, 128, 128, 0.437);
+            border-radius: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: 5px 5px 5px white,-5px -5px 5px white;
+            
+        }
+        #phone,#pass{
+            width: 300px;
+            height: 50px;
+            border-radius: 50px;
+            border: none;
+            outline: none;
+            padding-left: 20px;
+            font-size: 24px;
+        }
+        #phone{
+            width: 270px;
+            padding-right: 30px;
+            box-shadow: 2px 2px 2px black;
+        }
+        #pass{
+            width: 250px;
+        }
+        #imgContainer{
+            width: 320px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+            box-shadow: 2px 2px 2px black;
+        }
+        #loginBut{
+            height: 40px;
+            width: 150px;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px black;
+            border: none;
+            letter-spacing: 3px;
+            box-shadow: 2px 2px 2px black;
+            background-image: linear-gradient(75deg,rgb(255, 0, 157),rgb(136, 56, 139),rgb(128, 58, 158),rgb(159, 73, 159),rgb(255,0,157));
+            background-size: 800%;
+            background-position: 800%;
+            transition: transform 0.2s ;
+           
+        }
+        #loginBut:hover{
+            animation: buttonColorChange 5s linear  infinite;
+            transform: scale(1.1);
+        }
+        @keyframes buttonColorChange {
+            from{
+                background-position: 800%;
+            }
+            to{
+                background-position: 0%;
+            }
+        }
+        img{
+            height: 30px;
+            position: absolute;
+            right: 10px;
+            filter: drop-shadow(1px 1px 1px black);
+        }
+        h1{
+            font-size: 50px;
+            color: rgb(228, 0, 0);
+            text-shadow: 2px 2px 2px black;
+            letter-spacing: 5px;
+            
+        }
+        #eyeOPen{
+            display: none;
+        }
+        #acc{
+            font-size: 30px;
+            color: white;
+            letter-spacing: 2px;
+        }
+        a{
+            font-size: 30px;
+            text-decoration: none;
+            color: blue;
+            text-shadow: 1px 1px 1px black;
+        }
+        #invalid{
+            font-size: 30px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="backPage"></div>
+    <div id="container">
+        <h1> Login Here</h1>
+        <input id="phone" type="text" placeholder="Enter your Id">
+       <div id="imgContainer">
+        <input id="pass" type="password" placeholder="Enter your password">
+        <img id="eyeClose" src="eye close.png" onclick="eyeImgOpen()">
+        <img id="eyeOPen" src="eye.png" onclick="eyeImgClose()">
+       </div>
+       <input id="loginBut" type="button" value="Login" onclick="loginIntoAccount()">
+       <h1 id="invalid"> Invalid password Or id </h1>
+       <h1 id="acc">You don't have an account </h1>
+       <a href="SignUp Page.html"> Click Here</a>
+    </div>
+
+    <script>
+
+        function eyeImgOpen()
+        {
+            document.getElementById("pass").type = "text"
+            document.getElementById("eyeClose").style.display = "none"
+            document.getElementById("eyeOPen").style.display = "block"
+        }
+        function eyeImgClose()
+        {
+            document.getElementById("pass").type = "password"
+            document.getElementById("eyeClose").style.display = "block"
+            document.getElementById("eyeOPen").style.display = "none"
+        }
+        function loginIntoAccount()
+        {
+            var userGivenID = document.getElementById("phone").value;
+            var userGivenpassword = document.getElementById("pass").value;
+
+            var phoneNo = localStorage.getItem("phoneNo");
+            var email = localStorage.getItem("emailID");
+            var password = localStorage.getItem("password");
+
+            if ((phoneNo==userGivenID || email == userGivenID) && password == userGivenpassword)
+            {
+                window.open("../PROJECT/HTML/MovieWebPage.html")
+            }
+            else
+            {
+                document.getElementById("invalid").style.display = "block"
+            }
+           
+        }
+
+    </script>
+</body>
+</html>
